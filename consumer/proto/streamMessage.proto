@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option go_package="./consumer/proto";
+option java_package="com.example.server.kuaishouserver.proto";
+option csharp_namespace = "GrpcGreeter";
+
+package StreamMessage;
+
+// protoc --go_out=./ --go-grpc_out=./ ./consumer/proto/streamMessage.proto
+service StreamMessage {
+  rpc ConnectToConsume(ConnectRequest) returns (stream PushMsg);
+}
+
+message ConnectRequest {
+  string room_id = 1;
+}
+
+message PushMsg {
+	string push_type =1;
+	Payload payload =2;
+}
+
+message Payload {
+	string msg_id=1;  // string类型id
+  string sec_openid=2;    // 评论用户的加密openid, 当前其实没有加密
+  string content=3;      // 评论内容
+	string sec_gift_id=4;  // 加密的礼物id
+  int32 gift_num=5;        // 送出的礼物数量
+  int32 gift_value=6;    // 礼物总价值，单位分
+	string like_num=7;      // 点赞数量，上游2s合并一次数据
+  string avatar_url=8;     // 评论用户头像
+  string nickname=9;      // 评论用户昵称(不加密)
+  int64 timestamp=10; // 评论毫秒级时间戳
+}

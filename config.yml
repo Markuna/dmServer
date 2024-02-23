@@ -1,0 +1,29 @@
+server:
+  http:
+    port: 8090
+
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password:
+  db: dm_project
+
+redis:
+  addr: 127.0.0.1:6379
+  password:
+  db: 0
+
+rabbitmq:
+  addr: amqp://guest:guest@localhost:5672/
+
+douyin:
+  #url: https://webcast.bytedance.com
+  url: http://127.0.0.1:4523/m1/xxxxxxx-0-defaults
+  toutiaoUrl: https://developer.toutiao.com
+  appId: xxxxxxxxxxxxxxxxx
+  appSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  callbackSecret: xxxxxxxxxxxxxxxxxxxxxxx
+  skipAuth: false
+  
+forTest: false
